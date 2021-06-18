@@ -1,0 +1,15 @@
+spring.data.mongodb.uri=mongodb://localhost:27017/test
+
+#server.port=8700
+#spring.cache.type=redis
+#spring.redis.host=localhost
+#spring.redis.port=6379
+
+#not to cache null values
+#spring.cache.redis.cache-null-values=false
+
+#10min after which the cache values should expire 
+#spring.cache.redis.time-to-live=600000
+
+#prepend keyname with cache name, mycache:mykey
+#spring.cache.redis.use-key-prefix= false

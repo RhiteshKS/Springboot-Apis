@@ -1,0 +1,22 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@SuppressWarnings("deprecation")
+@RestController
+@EnableBinding(Source.class)
+public class MessagePublisher {
+	@Autowired
+	Source source;
+	
+	@PostMapping(value="/txn")
+	public String sendMessage(@RequestBody String payload) {
+		
+	}
+
+}

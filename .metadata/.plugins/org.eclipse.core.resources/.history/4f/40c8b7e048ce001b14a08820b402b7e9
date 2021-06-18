@@ -1,0 +1,48 @@
+package controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Employee;
+import com.example.demo.service.EmployeeService;
+
+@RestController
+public class EmployeeController {
+	
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@RequestMapping("/create")
+	public String create(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String designation, @RequestParam String email, @RequestParam int age) {
+		Employee e = employeeService.create(firstName,lastName, designation, email, age);
+		return e.toString();
+	}
+	
+	@RequestMapping("/get")
+	public Employee getEmployee(@RequestParam String firstName) {
+		return employeeService.getByFirstName(firstName);
+	}
+	@RequestMapping("/getAll")
+	public List<Employee> getAll(){
+		return employeeService.getAll();
+	}
+	@RequestMapping("/update")
+	public String update(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String designation, @RequestParam String email, @RequestParam int age) {
+		Employee e = employeeService.update(firstName, lastName, designation, email, age);
+		return e.toString();
+	}
+	@RequestMapping("/delete")
+	public String delete(@RequestParam String firstName) {
+		employeeService.delete(firstName);
+		return "Deleted "+firstName;
+	}
+	@RequestMapping("/deleteAll")
+	public String deleteAll() {
+		employeeService.deleteAll();
+		return "Deleted all records";
+	}	
+}
